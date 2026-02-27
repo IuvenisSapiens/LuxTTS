@@ -99,7 +99,7 @@ def load_models_gpu(model_path=None, device="cuda"):
     model_ckpt = f"{model_path}/model.pt"
     model_config = f"{model_path}/config.json"
 
-    transcriber = pipeline("automatic-speech-recognition", model="openai/whisper-base", device=device)
+    transcriber = pipeline("automatic-speech-recognition", model="./models/whisper-base", device=device)
     tokenizer = EmiliaTokenizer(token_file=token_file)
     tokenizer_config = {"vocab_size": tokenizer.vocab_size, "pad_id": tokenizer.pad_id}
 
@@ -135,7 +135,7 @@ def load_models_cpu(model_path = None, num_thread=2):
     fm_decoder_path = f"{model_path}/fm_decoder.onnx"
     model_config  = f"{model_path}/config.json"
 
-    transcriber = pipeline("automatic-speech-recognition", model="openai/whisper-tiny", device='cpu')
+    transcriber = pipeline("automatic-speech-recognition", model="./models/whisper-tiny", device='cpu')
 
     tokenizer = EmiliaTokenizer(token_file=token_file)
     tokenizer_config = {"vocab_size": tokenizer.vocab_size, "pad_id": tokenizer.pad_id}
